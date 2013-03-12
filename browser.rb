@@ -93,7 +93,7 @@ else
   body = response.body
   
   # links in Linksammlung aufnehmen
-  body.gsub!(/href="([^"]+)".*>(.*?)<.*>/i) {
+  body.gsub!(/<a.*href="([^"]+)".*>([^<]+)<\/a>/i) {
     linksammlung.push($1)
     linkcounter += 1
     if ($2) == "" 
@@ -122,8 +122,8 @@ else
   body.gsub!(/<td.*?>/i, "\t")
   
   # sonstiges HTML entfernen
-  body.gsub!(/<script.*>([^<]+)<\/script>/mi,"[java-script]")
-  js = $1
+  body.gsub!(/<(script.*|script)>([^<]+)<\/script>/i,"[java-script]")
+  js = $2
   body.gsub!(/<.*?>/m, "")
   
   
