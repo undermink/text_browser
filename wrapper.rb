@@ -16,7 +16,6 @@ class Wrapper
         puts l
         line += 1
       end
-      #break if ende
       if !ende
         print "\n\t----- WEITER: [ENTER]; ENDE: [Q] -----"
         weiter = STDIN.gets.chomp

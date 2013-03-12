@@ -93,7 +93,7 @@ else
   body = response.body
   
   # links in Linksammlung aufnehmen
-  body.gsub!(/<a.*href="([^"]+)".*>([^<]+)<\/a>/i) {
+  body.gsub(/<a.*href="([^"]+)".*>([^<]+)<\/(a.*|a)>/i) {
     linksammlung.push($1)
     linkcounter += 1
     if ($2) == "" 
@@ -134,7 +134,7 @@ else
   body.gsub!(/\t+/, "\t")
   
   if linksammlung.length > 0
-    body += "\nENTHALTENE LINKS:\n\n"
+    body += "\n\n\t----- ENTHALTENE LINKS: -----\n\n"
     linkcounter = 0
     linksammlung.each { |link|
       linkcounter += 1
@@ -145,12 +145,10 @@ else
   wrapper.show(body)
 
   if linksammlung.length > 0
-    puts
-    puts "\t----- QUELLCODE: [S][ENTER] [J]avascript -----"
+    puts "\n\t----- [S]OURCECODE - [J]avascript -----"
     print "LINK# oder URL => "
   else
-    puts
-    puts "\t----- QUELLCODE: [S][ENTER]; [J]avascript -----"
+    puts "\n\t----- [S]OURCECODE - [J]avascript -----"
     print "URL => "
   end
 end
