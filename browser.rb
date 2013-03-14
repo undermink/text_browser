@@ -93,7 +93,7 @@ else
   body = response.body
   
   # links in Linksammlung aufnehmen
-  body.gsub(/<a.*href="([^"]+)".*>([^<]+)<\/(a.*|a)>/i) {
+  body.gsub!(%r{<a.*?href="([^"]+)".*?>([^<]+)</(a.*?|a)>}i) {
     linksammlung.push($1)
     linkcounter += 1
     if ($2) == "" 
