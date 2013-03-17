@@ -1,5 +1,6 @@
 require "net/http"
 require "./wrapper.rb"
+require "nokogiri"
 
 # URL in Host, Port und Ressource zerlegen
 
@@ -122,7 +123,7 @@ else
   body.gsub!(/<td.*?>/i, "\t")
   
   # sonstiges HTML entfernen
-  body.gsub!(/<(script.*|script)>([^<]+)<\/script>/i,"[java-script]")
+  body.gsub!(/<(script.*?|script)>([^<]+)<\/script>/i,"[java-script]")
   js = $2
   body.gsub!(/<.*?>/m, "")
   
