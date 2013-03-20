@@ -1,6 +1,5 @@
 require "net/http"
 require "./wrapper.rb"
-require "nokogiri"
 
 # URL in Host, Port und Ressource zerlegen
 
